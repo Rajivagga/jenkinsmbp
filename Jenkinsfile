@@ -1,36 +1,29 @@
-
 pipeline {
-   agent any
-   stages {
-       stage('Build Code') {
-           steps {
-               sh "mvn clean package"
-               echo "Building Artifact for project"
-               
-           }
-       }
-       stage('Reading branch wise infor')
-       {
-       when
-       {
-       branch "feature*"
-       }
-       steps
-       {
-       echo " It is only for Feature branch"
-       }
-       }
+    agent any
 
-       stage('Deploy Code') {
-	   when
-	   {
-	   branch "master"
-	   	   }
-          steps {
-               sh "mvn tomcat7:deploy"
-               echo "Deploying Code"
-               
-          }
-      }
-      }
-      }
+    stages {
+        stage('Build Code') {
+            steps {
+			    sh """
+                echo "Building Artifact for project samplewebapp"
+				"""
+            }
+        }
+        stage('Reading branch wise') 
+		{
+		when
+		{
+		branch "feature"
+		}
+        steps 
+		{
+                echo "It is only for feature branch"
+        }
+        }
+        stage('Deploy') {
+            steps {
+			    sh """
+                echo 'Deploying....'
+            }
+    }
+    }
