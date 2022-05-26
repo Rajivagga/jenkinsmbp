@@ -13,5 +13,6 @@ String version=resource.getString("version");%>
  <h5>gitclasses</h5>
  <h6>Welcome to jenkins classes</h6>
  <h7>Welcome to devops CI/CD multibranch pipeline classes</h7>
+ <h8>Welcome to devops aws multibranch pipeline classes</h8>
 </body>
 </html>
