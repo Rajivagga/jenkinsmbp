@@ -35,8 +35,7 @@ pipeline {
           steps {
                sh """
                echo "Deploying Code"
-               """
-=======
+               """"
 
        stage('Deploy Code') {
 	   when
