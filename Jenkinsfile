@@ -1,15 +1,15 @@
+
 pipeline {
    agent any
    stages {
        stage('Build Code') {
            steps {
-               sh """
-               echo "Building Artifact for project samplewebapp"
-               """
+               sh "mvn clean package"
+               echo "Building Artifact for project"
                
            }
        }
-       stage('Reading branch wise')
+       stage('Reading branch wise infor')
        {
        when
        {
@@ -20,15 +20,17 @@ pipeline {
        echo " It is only for Feature branch"
        }
        }
+
        stage('Deploy Code') {
-       
+	   when
+	   {
+	   branch "master"
+	   	   }
           steps {
-               sh """
+               sh "mvn tomcat7:deploy"
                echo "Deploying Code"
-               """
                
           }
       }
       }
       }
-
